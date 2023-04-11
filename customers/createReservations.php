@@ -2,30 +2,14 @@
     session_start();
     include "../db_connect.php";
 
-    if (isset($_POST['newRes'])) {
-
-        // get rooms for reservations
-        $rooms = array();
-        foreach ($_POST as $key => $value) {
-            if ($value == "selected") {
-                array_push($rooms, $key);
-            }
-        }
-
-        if (sizeof($rooms) == 0) {
-            // no rooms
-            header("Location: reservations.php?error=Pick no rooms");
-            exit();
-        }
-        
-
+    if (isset($_POST['newRes']) && isset($_POST['chosen_rooms'])) {
         // RESERVATIONS
-        $checkInDate = $_SESSION['date1'];
-        $checkOutDate = $_SESSION['date2'];
+        $checkInDate = $_SESSION['start_date'];
+        $checkOutDate = $_SESSION['end_date'];
         $today = date("Y-m-d");
         $cusID = $_SESSION['cusID'];
 
-        $hotelID = $_SESSION['hotelID'];
+        $hotelID = $_SESSION['chosen_hotel_id'];
         $staff = "staff";
 
         // find empID for new reservations
@@ -38,29 +22,30 @@
                 and (r.resID is null or checkOutDate > '$today')
                 group by empID
                 order by count
-                limit 1;";
+                limit 1";
         $result = $conn->query($sql);
+        // echo $sql;
         $row = $result->fetch_assoc();
         $empID = $row['empID'];
 
         // create
         $sql = "INSERT INTO Reservations (checkInDate, checkOutDate, reservedDate, Employees_empID, Customers_cusID) 
                 VALUES ('$checkInDate', '$checkOutDate', '$today', '$empID', '$cusID')";
+        echo $sql;
         $result = $conn->query($sql);
 
-        // ROOMS_HAS_RESERVATIONS
-        // get resID
-        $sql = "SELECT max(resID) as max_resID from reservations;";
-        $result = $conn->query($sql);
-        $row = $result->fetch_assoc();
-        $resID = $row['max_resID'];
+        $resID = mysqli_insert_id($conn);
+        echo $resID;
 
-        foreach($rooms as $roomID) {
+        foreach($_POST['chosen_rooms'] as $roomID) {
+            echo $roomID;
             $sql = "INSERT INTO Rooms_has_reservations (Rooms_roomID, Rooms_Hotels_hotelID, Reservations_resID) 
                     VALUES ('$roomID', '$hotelID', '$resID')";
             $result = $conn->query($sql);
+            echo $sql;
         }
 
-        header("Location: reservations.php?error=here");
-        exit();
-    }
+        }
+else {
+    echo "dmm";
+}

@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th3 22, 2023 lúc 03:14 AM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 7.4.29
+-- Host: localhost
+-- Generation Time: Apr 11, 2023 at 04:56 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,32 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `hotelManagement4_test`
+-- Database: `hotelManagement4_test`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `Customers`
+-- Table structure for table `City`
+--
+
+CREATE TABLE `City` (
+  `city_id` int(11) NOT NULL,
+  `city_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `City`
+--
+
+INSERT INTO `City` (`city_id`, `city_name`) VALUES
+(1, 'Boston'),
+(2, 'Hanoi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Customers`
 --
 
 CREATE TABLE `Customers` (
@@ -38,7 +57,7 @@ CREATE TABLE `Customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `Customers`
+-- Dumping data for table `Customers`
 --
 
 INSERT INTO `Customers` (`cusID`, `cusName`, `cusPhone`, `cusEmail`, `cusAddress`, `cusGender`, `password`) VALUES
@@ -51,7 +70,7 @@ INSERT INTO `Customers` (`cusID`, `cusName`, `cusPhone`, `cusEmail`, `cusAddress
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `Employees`
+-- Table structure for table `Employees`
 --
 
 CREATE TABLE `Employees` (
@@ -67,7 +86,7 @@ CREATE TABLE `Employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `Employees`
+-- Dumping data for table `Employees`
 --
 
 INSERT INTO `Employees` (`empID`, `empName`, `empPhone`, `empEmail`, `empAddress`, `empGender`, `position`, `password`, `Hotels_hotelID`) VALUES
@@ -81,27 +100,28 @@ INSERT INTO `Employees` (`empID`, `empName`, `empPhone`, `empEmail`, `empAddress
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `Hotels`
+-- Table structure for table `Hotels`
 --
 
 CREATE TABLE `Hotels` (
   `hotelID` int(11) NOT NULL,
   `hotelName` varchar(100) NOT NULL,
-  `location` varchar(200) NOT NULL
+  `location` varchar(200) NOT NULL,
+  `city_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `Hotels`
+-- Dumping data for table `Hotels`
 --
 
-INSERT INTO `Hotels` (`hotelID`, `hotelName`, `location`) VALUES
-(1, 'Hotel 1', 'City 1'),
-(2, 'Hotel 2', 'City 2');
+INSERT INTO `Hotels` (`hotelID`, `hotelName`, `location`, `city_id`) VALUES
+(1, 'Hotel 1', 'City 1', 1),
+(2, 'Hotel 2', 'City 2', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `Reservations`
+-- Table structure for table `Reservations`
 --
 
 CREATE TABLE `Reservations` (
@@ -114,17 +134,19 @@ CREATE TABLE `Reservations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `Reservations`
+-- Dumping data for table `Reservations`
 --
 
 INSERT INTO `Reservations` (`resID`, `checkInDate`, `checkOutDate`, `reservedDate`, `Employees_empID`, `Customers_cusID`) VALUES
 (14, '2022-12-01', '2022-12-02', '2022-11-30', 1, 8),
-(15, '2023-03-04', '2023-03-05', '2023-03-03', 3, 8);
+(15, '2023-03-04', '2023-03-05', '2023-03-03', 3, 8),
+(16, '2023-04-10', '2023-04-13', '2023-04-07', 6, 8),
+(24, '2023-04-11', '2023-04-14', '2023-04-11', 6, 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `Rooms`
+-- Table structure for table `Rooms`
 --
 
 CREATE TABLE `Rooms` (
@@ -135,7 +157,7 @@ CREATE TABLE `Rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `Rooms`
+-- Dumping data for table `Rooms`
 --
 
 INSERT INTO `Rooms` (`roomID`, `price`, `type`, `Hotels_hotelID`) VALUES
@@ -147,7 +169,7 @@ INSERT INTO `Rooms` (`roomID`, `price`, `type`, `Hotels_hotelID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `Rooms_has_Reservations`
+-- Table structure for table `Rooms_has_Reservations`
 --
 
 CREATE TABLE `Rooms_has_Reservations` (
@@ -157,28 +179,37 @@ CREATE TABLE `Rooms_has_Reservations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `Rooms_has_Reservations`
+-- Dumping data for table `Rooms_has_Reservations`
 --
 
 INSERT INTO `Rooms_has_Reservations` (`Rooms_roomID`, `Rooms_Hotels_hotelID`, `Reservations_resID`) VALUES
 (101, 1, 14),
 (101, 1, 15),
+(101, 1, 24),
 (102, 1, 14),
-(102, 1, 15);
+(102, 1, 15),
+(102, 1, 16),
+(103, 1, 24);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `Customers`
+-- Indexes for table `City`
+--
+ALTER TABLE `City`
+  ADD PRIMARY KEY (`city_id`);
+
+--
+-- Indexes for table `Customers`
 --
 ALTER TABLE `Customers`
   ADD PRIMARY KEY (`cusID`),
   ADD UNIQUE KEY `cusEmail_UNIQUE` (`cusEmail`);
 
 --
--- Chỉ mục cho bảng `Employees`
+-- Indexes for table `Employees`
 --
 ALTER TABLE `Employees`
   ADD PRIMARY KEY (`empID`),
@@ -186,15 +217,16 @@ ALTER TABLE `Employees`
   ADD KEY `fk_Employees_Hotels1_idx` (`Hotels_hotelID`);
 
 --
--- Chỉ mục cho bảng `Hotels`
+-- Indexes for table `Hotels`
 --
 ALTER TABLE `Hotels`
   ADD PRIMARY KEY (`hotelID`),
   ADD UNIQUE KEY `hotelName_UNIQUE` (`hotelName`),
-  ADD UNIQUE KEY `location_UNIQUE` (`location`);
+  ADD UNIQUE KEY `location_UNIQUE` (`location`),
+  ADD KEY `FK_City` (`city_id`);
 
 --
--- Chỉ mục cho bảng `Reservations`
+-- Indexes for table `Reservations`
 --
 ALTER TABLE `Reservations`
   ADD PRIMARY KEY (`resID`),
@@ -202,14 +234,14 @@ ALTER TABLE `Reservations`
   ADD KEY `fk_Reservations_Customers1_idx` (`Customers_cusID`);
 
 --
--- Chỉ mục cho bảng `Rooms`
+-- Indexes for table `Rooms`
 --
 ALTER TABLE `Rooms`
   ADD PRIMARY KEY (`roomID`,`Hotels_hotelID`),
   ADD KEY `fk_Rooms_Hotels1_idx` (`Hotels_hotelID`);
 
 --
--- Chỉ mục cho bảng `Rooms_has_Reservations`
+-- Indexes for table `Rooms_has_Reservations`
 --
 ALTER TABLE `Rooms_has_Reservations`
   ADD PRIMARY KEY (`Rooms_roomID`,`Rooms_Hotels_hotelID`,`Reservations_resID`),
@@ -217,58 +249,70 @@ ALTER TABLE `Rooms_has_Reservations`
   ADD KEY `fk_Rooms_has_Reservations_Rooms1_idx` (`Rooms_roomID`,`Rooms_Hotels_hotelID`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `Customers`
+-- AUTO_INCREMENT for table `City`
+--
+ALTER TABLE `City`
+  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `Customers`
 --
 ALTER TABLE `Customers`
   MODIFY `cusID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `Employees`
+-- AUTO_INCREMENT for table `Employees`
 --
 ALTER TABLE `Employees`
   MODIFY `empID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `Hotels`
+-- AUTO_INCREMENT for table `Hotels`
 --
 ALTER TABLE `Hotels`
-  MODIFY `hotelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `hotelID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `Reservations`
+-- AUTO_INCREMENT for table `Reservations`
 --
 ALTER TABLE `Reservations`
-  MODIFY `resID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `resID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `Employees`
+-- Constraints for table `Employees`
 --
 ALTER TABLE `Employees`
   ADD CONSTRAINT `fk_Employees_Hotels1` FOREIGN KEY (`Hotels_hotelID`) REFERENCES `Hotels` (`hotelID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Các ràng buộc cho bảng `Reservations`
+-- Constraints for table `Hotels`
+--
+ALTER TABLE `Hotels`
+  ADD CONSTRAINT `FK_City` FOREIGN KEY (`city_id`) REFERENCES `City` (`city_id`);
+
+--
+-- Constraints for table `Reservations`
 --
 ALTER TABLE `Reservations`
   ADD CONSTRAINT `fk_Reservations_Customers1` FOREIGN KEY (`Customers_cusID`) REFERENCES `Customers` (`cusID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Reservations_Employees1` FOREIGN KEY (`Employees_empID`) REFERENCES `Employees` (`empID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Các ràng buộc cho bảng `Rooms`
+-- Constraints for table `Rooms`
 --
 ALTER TABLE `Rooms`
   ADD CONSTRAINT `fk_Rooms_Hotels1` FOREIGN KEY (`Hotels_hotelID`) REFERENCES `Hotels` (`hotelID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Các ràng buộc cho bảng `Rooms_has_Reservations`
+-- Constraints for table `Rooms_has_Reservations`
 --
 ALTER TABLE `Rooms_has_Reservations`
   ADD CONSTRAINT `fk_Rooms_has_Reservations_Reservations1` FOREIGN KEY (`Reservations_resID`) REFERENCES `Reservations` (`resID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
