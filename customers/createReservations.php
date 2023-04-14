@@ -19,14 +19,15 @@
                 on e.empID = r.Employees_empID
                 where e.Hotels_hotelID = '$hotelID' 
                 and e.position = '$staff'
-                and (r.resID is null or checkOutDate > '$today')
+                and (r.resID is null or checkOutDate > date($today))
                 group by empID
                 order by count
                 limit 1";
         $result = $conn->query($sql);
-        // echo $sql;
+        //echo $sql;
         $row = $result->fetch_assoc();
         $empID = $row['empID'];
+        //echo $empID;
 
         // create
         $sql = "INSERT INTO Reservations (checkInDate, checkOutDate, reservedDate, Employees_empID, Customers_cusID) 
@@ -44,7 +45,7 @@
             $result = $conn->query($sql);
             echo $sql;
         }
-
+        header("location:reservations.php");
         }
 else {
     echo "dmm";
