@@ -28,6 +28,7 @@
         <link href="https://repo.rachmat.id/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
         <script type="text/javascript" src="https://repo.rachmat.id/jquery-1.12.4.js"></script>
         <script type="text/javascript" src="https://repo.rachmat.id/jquery-ui-1.12.1/jquery-ui.js"></script>
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
         <!-- <link href="booking.css" rel="stylesheet"> -->
         <script src="script.js"></script>
     </head>
@@ -55,7 +56,7 @@
             </header>
             
             <body>
-                <form action = "" method = "post">
+                <form action = "" method = "post" >
                     <fieldset>
                         <legend>New Reservations</legend>
 
@@ -85,7 +86,7 @@
 
                     </fieldset>
                 </form>
-                
+
                 <?php
                      if (isset($_POST['conditions']))
                      {
@@ -112,7 +113,6 @@
                         header('location:pick_room.php');
                     }
                 ?>
-                
             </body>
             
             

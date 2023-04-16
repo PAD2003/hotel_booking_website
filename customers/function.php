@@ -8,31 +8,46 @@ function createHotelsSelection($hotels, $start_date, $end_date) {
 
         $rooms_left = 0;
         $capacity = 0;
-
+        
         while ($rrow = mysqli_fetch_array($available_rooms)) {
             // echo $rrow['hotel_id']. ": " . $rrow['room_no'] . ", " . $rrow['price_per_night'] . "<br>";
             $rooms_left++;
-            // $capacity += $rrow['no_of_people'];
+            $capacity += $rrow['capacity'];
         }
 
         $hoe = $row['hotelID'];
         $hoe_name = $row['hotelName'];
-        $element = "
-        <form class=\"div-box\"  /*action=\"pick_room.php\"*/ method=\"POST\" >
-        <div><lable>Hotel</lable> <label class = \"var\">: $hoe_name </label> </div><br>
-        <div> Service</lable> <label class = \"var\">: </label></div>";
-        $element = $element . "<br>";
-
-        $element = $element . "<div>Rooms left </lable> <label class = \"var\">: $rooms_left</label></div><br>
-        <div>Capacity left </lable> <label class = \"var\">: $capacity </label></div><br>
-        <div>
-            <input type=\"submit\" class=\"\" name=\"book_hotel\" value=\"Book Now\"></input>
-            <input type=\"hidden\" name =\"chosen_hotel_id\" value=$hoe  >
-        </div>
+        $link = $row['link_img'];
+        $new_element = "
+        <form class=\"div-box\"  action=\"pick_room.php\" method=\"POST\" >
+          <div class=\"child1\"><img id=\"img_stadium\" src=\"$link\"></div>
+          <div class=\"child2\">
+            <p>$hoe_name</p>
+            <p>Room left : $rooms_left</p>
+            <p>Capacity : $capacity</p>
+            <input class=\"submitbtn\" type=\"submit\" name=\"book_hotel\" value=\"Book Now\"></input>
+            <input type=\"hidden\" name =\"chosen_hotel_id\" value=\"$hoe\">
+          </div>
         </form>
         ";
+        echo $new_element;
+        
+        // $element = "
+        // <form class=\"div-box\" /*action=\"pick_room.php\"*/ method=\"POST\" >
+        // <div><lable style=\"color:white\" >Hotel</lable> <label style=\"color:white\" class = \"var\">: $hoe_name </label> </div><br>
+        // <div style=\"color:white\"> Service</lable> <label style=\"color:white\" class = \"var\">: </label></div>";
+        // $element = $element . "<br>";
 
-        echo $element;
+        // $element = $element . "<div style=\"color:white\">Rooms left </lable> <label style=\"color:white\" class = \"var\">: $rooms_left</label></div><br>
+        // <div style=\"color:white\">Capacity left </lable> <label style=\"color:white\" class = \"var\">: $capacity </label></div><br>
+        // <div>
+        //     <input type=\"submit\" class=\"\" name=\"book_hotel\" value=\"Book Now\"></input>
+        //     <input type=\"hidden\" name =\"chosen_hotel_id\" value=$hoe  >
+        // </div>
+        // </form>
+        // ";
+
+        // echo $element;
     }
 }
 
