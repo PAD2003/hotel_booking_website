@@ -19,7 +19,7 @@ function createHotelsSelection($hotels, $start_date, $end_date) {
         $hoe_name = $row['hotelName'];
         $link = $row['link_img'];
         $new_element = "
-        <form class=\"div-box\"  action=\"pick_room.php\" method=\"POST\" >
+        <form class=\"div-box\" method=\"POST\" >
           <div class=\"child1\"><img id=\"img_stadium\" src=\"$link\"></div>
           <div class=\"child2\">
             <p>$hoe_name</p>

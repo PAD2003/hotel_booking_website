@@ -92,7 +92,7 @@
                      {
                         $selected_city = mysqli_escape_string($conn,$_POST['city']);
                         $hotels_query = "SELECT * FROM Hotels WHERE city_id = " . $selected_city;
-                        echo $hotels_query;
+                        // echo $hotels_query;
                         $hotels = $conn->query($hotels_query);
                         $_SESSION['start_date'] = $_POST['start_date'];
                         $_SESSION['end_date'] = $_POST['end_date'];

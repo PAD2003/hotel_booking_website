@@ -50,9 +50,9 @@
             while ($row = mysqli_fetch_array($avilable_rooms)) {
 
                 echo "<div><div class=\"bord\"><input type=checkbox name=\"chosen_rooms[]\" value=" . $row['roomID']  . ">
-                Room number:  " . $row['room_no'] . "</div><div class=\"bord\">" .
-                "Price Per Night: ". $row['price_per_night'] . "<br>" .
-                "Capacity: " . $row['no_of_people'] . "</div>" .
+                Room number:  " . $row['roomID'] . "</div><div class=\"bord\">" .
+                "Price Per Night: ". $row['price'] . "<br>" .
+                "Capacity: " . $row['capacity'] . "</div>" .
                 
                 "</div><br>";
             };
