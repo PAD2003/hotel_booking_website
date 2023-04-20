@@ -1057,19 +1057,43 @@ fieldset {
 .div-box{
     display: flex; 
     margin-top:10px;
-	background-color: wheat;
+	background-color: #36454F;
 	border-style: solid;
-	border-color: #11a8ab;
+	border-color: #F5F5DC;
   }
 .child1{
-flex: 1; width:50px;
+	margin-top: 20px;
+flex: 3; width:50px;
+text-align: center;
+font-size: 20px;
+}
+.child1-room{
+	margin-top: 10px;
+	margin-bottom: 10px;
+flex: 3; width:50px;
 text-align: center;
 font-size: 20px;
 }
 .child2{
-    flex: 3;
+    flex: 7;
     text-align:left;
     font-size: 20px;
+	margin-bottom: 20px;
+}
+.child2-room{
+    flex: 5;
+    text-align:left;
+    font-size: 20px;
+	margin-bottom: 20px;
+	font-family: 'Times New Roman', Times, serif;
+	margin-top: 40px;
+}
+.child3{
+    flex: 2;
+	margin-top: 30px;
+    text-align:left;
+    font-size: 20px;
+	margin-bottom: 20px;
 }
 .submitbtn{
     /* margin-bottom: 10px;
@@ -1077,8 +1101,7 @@ font-size: 20px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: 20px; */
-	background-color: #EA4C89;
-	border-radius: 8px;
+	background-color: black;
 	border-style: none;
 	box-sizing: border-box;
 	color: #FFFFFF;
@@ -1086,9 +1109,9 @@ font-size: 20px;
 	display: inline-block;
 	font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 700;
 	height: 40px;
-	line-height: 20px;
+	line-height: 15px;
 	list-style: none;
 	margin: 0;
 	outline: none;
@@ -1121,10 +1144,10 @@ font-size: 20px;
 	width: 100px;
 	font: bold15px arial,sans-serif;
 	text-shadow: none; */
-	background-color: #c2fbd7;
+	background-color: white;
 	border-radius: 100px;
-	box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
-	color: green;
+	box-shadow: rgba(29, 59, 231, 0.2) 0 -25px 18px -14px inset,rgba(35, 101, 182, 0.15) 0 1px 2px,rgba(21, 65, 160, 0.15) 0 2px 4px,rgba(23, 113, 165, 0.15) 0 4px 8px,rgba(24, 48, 201, 0.15) 0 8px 16px,rgba(43, 126, 214, 0.15) 0 16px 32px;
+	color: darkblue;
 	cursor: pointer;
 	display: inline-block;
 	font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
@@ -1140,7 +1163,7 @@ font-size: 20px;
 }
 
 .form-submit-button:hover {
-	box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+	box-shadow: rgba(75, 131, 236, 0.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(40, 171, 219, 0.25) 0 2px 4px,rgba(63, 51, 225, 0.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(50, 125, 223, 0.25) 0 16px 32px;
 	transform: scale(1.05) rotate(-1deg);
 }
 
@@ -1154,9 +1177,11 @@ font-size: 20px;
 	
 .checkbox-wrapper-24 label {
 	display: inline-block;
-	color: #333;
+	color: white;
 	cursor: pointer;
 	position: relative;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+	margin-top: 30px;
 	}
 
 .checkbox-wrapper-24 label span {
@@ -1166,7 +1191,7 @@ font-size: 20px;
 	width: 25px;
 	height: 25px;
 	transform-origin: center;
-	border: 2px solid #333;
+	border: 2px solid white;
 	border-radius: 50%;
 	vertical-align: middle;
 	margin-right: 10px;
@@ -1247,4 +1272,7 @@ font-size: 20px;
 	width: 5px;
 	background: #fff;
 	transition: width 150ms ease 100ms;
+}
+.hotelname{
+	color: white;
 }

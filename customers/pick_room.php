@@ -30,6 +30,7 @@
                         <a class="header-menu-tab" href="../account/logout.php"><span class="icon fontawesome-envelope scnd-font-color"></span>Log out</a>
                     </li>
                 </ul>
+                
                 <div class="profile-menu">
                     <p><?php echo $_SESSION['cusName']; ?> <a href="#26"><span class="entypo-down-open scnd-font-color"></span></a></p>
                 </div>
@@ -42,24 +43,23 @@
                 $chosen_hotel_row = mysqli_fetch_array($chosen_hotel_res);
                 $map = $chosen_hotel_row['link_map'];
                 $name = $chosen_hotel_row['hotelName'];
-                echo '<h1 class = hoe_name>' . $name . '</h1><br>';
-                echo "<iframe src=\"https://www.google.com/maps/embed?pb={$map}\" width=\"900\" height=\"600\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>";
+                echo '<br><br><h1 class = hoe_name>' . $name . '</h1><br><br><br>';
+                echo "<iframe src=\"https://www.google.com/maps/embed?pb={$map}\" width=\"950\" height=\"600\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>";
                 echo "<br><br>";
                 $avilable_rooms = getAllRooms($test, $_SESSION['start_date'], $_SESSION['end_date']);
 
 
                 echo '<form action="createReservations.php" method="post">';
                 while ($row = mysqli_fetch_array($avilable_rooms)) {
-
                     echo '
                     <div class="div-box">
-                        <div class="child1">image here!</div>
-                        <div class = "child2">
-                            Room number: ' . $row['roomID'] . '<br>
-                            Price Per Night: ' . $row['price'] . '<br> 
+                        <div class="child1-room"><img src="'.$row['link_img'].'" alt=""></div>
+                        <div class = "child2-room">
+                            Room number: ' . $row['roomID'] . '</b><br>
+                            Price Per Night: $' . $row['price'] . '<br> 
                             Capacity: ' . $row['capacity'] . '<br>
                         </div>
-                        <div class="checkbox-wrapper-24">
+                        <div class="checkbox-wrapper-24 child3">
                             <input type="checkbox" id="check-'  . $row['roomID']  . '" name="chosen_rooms[]" value="' . $row['roomID']  .'" />
                             <label for="check-' . $row['roomID']  .'">
                                 <span><!-- This span is needed to create the "checkbox" element --></span>Select

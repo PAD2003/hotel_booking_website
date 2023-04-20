@@ -22,11 +22,12 @@ function createHotelsSelection($hotels, $start_date, $end_date) {
         <form class=\"div-box\" method=\"POST\" >
           <div class=\"child1\"><img id=\"img_stadium\" src=\"$link\"></div>
           <div class=\"child2\">
-            <p>$hoe_name</p>
+            <h3 class=\"hotelname\">$hoe_name</h3>
             <p>Room left : $rooms_left</p>
             <p>Capacity : $capacity</p>
             <input class=\"submitbtn\" type=\"submit\" name=\"book_hotel\" value=\"Book Now\"></input>
             <input type=\"hidden\" name =\"chosen_hotel_id\" value=\"$hoe\">
+            <br>
           </div>
         </form>
         ";
