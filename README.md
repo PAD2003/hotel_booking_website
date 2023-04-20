@@ -30,7 +30,7 @@ $ git clone https://github.com/PAD2003/hotel_booking_website.git
 -	Bước 5: Chọn mục “Chọn tệp” và chọn tệp “/XAMPP/xamppfiles/htdocs/hotel_booking_website/ hotelManagement4 _test.sql”
 
 ## Chạy chương trình
--	Cần mở ứng dụng xampp, khởi chạy MySQL Database và Apache Web Server
+-	Mở ứng dụng xampp, khởi chạy MySQL Database và Apache Web Server
 -	Với vai trò người dùng, truy cập tới http://localhost/hotel_management/index.php
 -	Với vai trò Admin, truy cập tới http://localhost/phpmyadmin/
 
