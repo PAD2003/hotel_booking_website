@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="menu.css">
         <link rel="stylesheet" href="account.css">
         <link rel="stylesheet" href="hotel.css">
+        <link rel="stylesheet" href="pick_room.css">
     </head>
     <body style="color: white;">
         <div class="main-container">
@@ -47,17 +48,26 @@
                 $avilable_rooms = getAllRooms($test, $_SESSION['start_date'], $_SESSION['end_date']);
 
 
-                echo "<form action=\"createReservations.php\" method=\"post\">";
+                echo '<form action="createReservations.php" method="post">';
                 while ($row = mysqli_fetch_array($avilable_rooms)) {
 
-                    echo "<div><div class=\"bord\"><input type=checkbox name=\"chosen_rooms[]\" value=" . $row['roomID']  . ">
-                    Room number:  " . $row['roomID'] . "</div><div class=\"bord\">" .
-                    "Price Per Night: ". $row['price'] . "<br>" .
-                    "Capacity: " . $row['capacity'] . "</div>" .
-                    
-                    "</div><br>";
+                    echo '
+                    <div class="div-box">
+                        <div class="child1">image here!</div>
+                        <div class = "child2">
+                            Room number: ' . $row['roomID'] . '<br>
+                            Price Per Night: ' . $row['price'] . '<br> 
+                            Capacity: ' . $row['capacity'] . '<br>
+                        </div>
+                        <div class="checkbox-wrapper-24">
+                            <input type="checkbox" id="check-'  . $row['roomID']  . '" name="chosen_rooms[]" value="' . $row['roomID']  .'" />
+                            <label for="check-' . $row['roomID']  .'">
+                                <span><!-- This span is needed to create the "checkbox" element --></span>Select
+                            </label>
+                        </div>
+                    </div><br>';
                 };
-                echo "<a href=\"reservations.php\"><input type=\"submit\" value=\"confirm\" name=\"newRes\"></a> <br>";
+                echo '<a href="reservations.php"><input class = "form-submit-button" type="submit" value="Confirm!" name="newRes"></a> <br>';
                 echo "</form> <br>";
 
                 // if(isset($_POST['chosen_rooms'])){

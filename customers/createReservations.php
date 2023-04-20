@@ -43,10 +43,10 @@
             $sql = "INSERT INTO Rooms_has_reservations (Rooms_roomID, Rooms_Hotels_hotelID, Reservations_resID) 
                     VALUES ('$roomID', '$hotelID', '$resID')";
             $result = $conn->query($sql);
-            echo $sql;
+            echo "<br>" . $sql;
         }
         header("location:reservations.php");
         }
 else {
-    echo "dmm";
+    echo "hi";
 }

@@ -1057,6 +1057,9 @@ fieldset {
 .div-box{
     display: flex; 
     margin-top:10px;
+	background-color: wheat;
+	border-style: solid;
+	border-color: #11a8ab;
   }
 .child1{
 flex: 1; width:50px;
@@ -1069,13 +1072,179 @@ font-size: 20px;
     font-size: 20px;
 }
 .submitbtn{
-    margin-bottom: 10px;
+    /* margin-bottom: 10px;
     color: red;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 20px; */
+	background-color: #EA4C89;
+	border-radius: 8px;
+	border-style: none;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	height: 40px;
+	line-height: 20px;
+	list-style: none;
+	margin: 0;
+	outline: none;
+	padding: 10px 16px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	transition: color 100ms;
+	vertical-align: baseline;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
   }
 
-  .hoe_name{
+.submitbtn:hover,
+.submitbtn:focus {
+  background-color: #F082AC;
+}
+
+.hoe_name{
 	font-size: 50;
-  }
+}
+
+.form-submit-button {
+	/* background: #0066A2;
+	color: white;
+	border-style: outset;
+	border-color: #0066A2;
+	height: 50px;
+	width: 100px;
+	font: bold15px arial,sans-serif;
+	text-shadow: none; */
+	background-color: #c2fbd7;
+	border-radius: 100px;
+	box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+	color: green;
+	cursor: pointer;
+	display: inline-block;
+	font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+	padding: 7px 20px;
+	text-align: center;
+	text-decoration: none;
+	transition: all 250ms;
+	border: 0;
+	font-size: 16px;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+}
+
+.form-submit-button:hover {
+	box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+	transform: scale(1.05) rotate(-1deg);
+}
+
+.checkbox-wrapper-24 .checkbox {
+	display: table-cell;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+	text-align: center;
+	}
+	
+.checkbox-wrapper-24 label {
+	display: inline-block;
+	color: #333;
+	cursor: pointer;
+	position: relative;
+	}
+
+.checkbox-wrapper-24 label span {
+	display: inline-block;
+	position: relative;
+	background-color: transparent;
+	width: 25px;
+	height: 25px;
+	transform-origin: center;
+	border: 2px solid #333;
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 10px;
+	transition: background-color 150ms 200ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+	}
+
+.checkbox-wrapper-24 label span:before {
+	content: "";
+	width: 0px;
+	height: 2px;
+	border-radius: 2px;
+	background: #333;
+	position: absolute;
+	transform: rotate(45deg);
+	top: 13px;
+	left: 9px;
+	transition: width 50ms ease 50ms;
+	transform-origin: 0% 0%;
+	}
+
+.checkbox-wrapper-24 label span:after {
+	content: "";
+	width: 0;
+	height: 2px;
+	border-radius: 2px;
+	background: #333;
+	position: absolute;
+	transform: rotate(305deg);
+	top: 16px;
+	left: 10px;
+	transition: width 50ms ease;
+	transform-origin: 0% 0%;
+	}
+
+.checkbox-wrapper-24 label:hover span:before {
+	width: 5px;
+	transition: width 100ms ease;
+	}
+
+.checkbox-wrapper-24 label:hover span:after {
+	width: 10px;
+	transition: width 150ms ease 100ms;
+	}
+	
+.checkbox-wrapper-24 input[type=checkbox] {
+	display: none;
+}
+
+.checkbox-wrapper-24 input[type=checkbox]:checked + label span {
+	background-color: #333;
+	transform: scale(1.25);
+}
+
+.checkbox-wrapper-24 input[type=checkbox]:checked + label span:after {
+	width: 10px;
+	background: #fff;
+	transition: width 150ms ease 100ms;
+}
+
+.checkbox-wrapper-24 input[type=checkbox]:checked + label span:before {
+	width: 5px;
+	background: #fff;
+	transition: width 150ms ease 100ms;
+}
+
+.checkbox-wrapper-24 input[type=checkbox]:checked + label:hover span {
+	background-color: #333;
+	transform: scale(1.25);
+}
+
+.checkbox-wrapper-24 input[type=checkbox]:checked + label:hover span:after {
+	width: 10px;
+	background: #fff;
+	transition: width 150ms ease 100ms;
+}
+
+.checkbox-wrapper-24 input[type=checkbox]:checked + label:hover span:before {
+	width: 5px;
+	background: #fff;
+	transition: width 150ms ease 100ms;
+}

@@ -62,6 +62,7 @@
 
                         <label for="cities">Choose a Location:</label>
                         <select name="city" id="cities">
+                            <option hidden disabled selected value> -- select an option -- </option>
                             <?php
                                 if ($cities->num_rows > 0) {
                                     while ($city = $cities->fetch_assoc()) {
@@ -82,14 +83,18 @@
                         <input type="date" name="end_date" id="end_date" >
                         <br> <br>
 
-                        <input type = "submit" value = "View Hotels" name = "conditions">
+                        <input class = "form-submit-button" type = "submit" value = "View Hotels" name = "conditions">
 
                     </fieldset>
                 </form>
 
                 <?php
                      if (isset($_POST['conditions']))
-                     {
+                     {  
+                        if (!isset($_POST['city'])) {
+                            echo "Please choose a city";
+                            return;
+                        }
                         $selected_city = mysqli_escape_string($conn,$_POST['city']);
                         $hotels_query = "SELECT * FROM Hotels WHERE city_id = " . $selected_city;
                         // echo $hotels_query;
