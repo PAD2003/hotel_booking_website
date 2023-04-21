@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2023 at 10:34 AM
+-- Generation Time: Apr 20, 2023 at 08:41 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -148,8 +148,7 @@ INSERT INTO `Reservations` (`resID`, `checkInDate`, `checkOutDate`, `reservedDat
 (15, '2023-03-04', '2023-03-05', '2023-03-03', 3, 8),
 (16, '2023-04-10', '2023-04-13', '2023-04-07', 6, 8),
 (24, '2023-04-11', '2023-04-14', '2023-04-11', 6, 1),
-(32, '2023-04-28', '2023-04-29', '2023-04-14', 1, 9),
-(33, '2023-04-16', '2023-04-17', '2023-04-14', 2, 9);
+(35, '2023-04-29', '2023-04-30', '2023-04-20', 2, 9);
 
 -- --------------------------------------------------------
 
@@ -162,19 +161,20 @@ CREATE TABLE `Rooms` (
   `price` int(11) NOT NULL,
   `type` varchar(100) DEFAULT NULL,
   `Hotels_hotelID` int(11) NOT NULL,
-  `capacity` int(11) NOT NULL
+  `capacity` int(11) NOT NULL,
+  `link_img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Rooms`
 --
 
-INSERT INTO `Rooms` (`roomID`, `price`, `type`, `Hotels_hotelID`, `capacity`) VALUES
-(101, 100, 'Garden View', 1, 3),
-(101, 100, 'Pool View', 2, 5),
-(102, 100, 'Lake View', 1, 2),
-(103, 150, 'Lake View', 1, 2),
-(201, 200, 'City View', 7, 1);
+INSERT INTO `Rooms` (`roomID`, `price`, `type`, `Hotels_hotelID`, `capacity`, `link_img`) VALUES
+(101, 100, 'Garden View', 1, 3, './hotel/1_101.jpeg'),
+(101, 100, 'Pool View', 2, 5, './hotel/2_101.jpeg'),
+(102, 100, 'Lake View', 1, 2, './hotel/1_102.jpeg'),
+(103, 150, 'Lake View', 1, 2, './hotel/1_103.jpeg'),
+(201, 200, 'City View', 7, 1, '');
 
 -- --------------------------------------------------------
 
@@ -196,8 +196,7 @@ INSERT INTO `Rooms_has_Reservations` (`Rooms_roomID`, `Rooms_Hotels_hotelID`, `R
 (101, 1, 14),
 (101, 1, 15),
 (101, 1, 24),
-(101, 1, 32),
-(101, 2, 33),
+(101, 2, 35),
 (102, 1, 14),
 (102, 1, 15),
 (102, 1, 16),
@@ -292,7 +291,7 @@ ALTER TABLE `Hotels`
 -- AUTO_INCREMENT for table `Reservations`
 --
 ALTER TABLE `Reservations`
-  MODIFY `resID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `resID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables
