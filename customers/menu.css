@@ -1059,7 +1059,7 @@ fieldset {
     margin-top:10px;
 	background-color: #36454F;
 	border-style: solid;
-	border-color: #F5F5DC;
+	border-color: rgb(192, 192, 192);
   }
 .child1{
 	margin-top: 20px;
