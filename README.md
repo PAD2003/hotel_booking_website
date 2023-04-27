@@ -1,6 +1,7 @@
 # Hotel Booking Website
-Website quản lý chuỗi khách sạn sử dụng php &amp; html
-Có thể xem thử bản demo tại: https://hotelbookingwebsiteuet.000webhostapp.com/index.php
+Website quản lý chuỗi khách sạn sử dụng php &amp; html. 
+
+Xem thử bản demo tại: https://hotelbookingwebsiteuet.000webhostapp.com/index.php
 
 # Cài đặt phần mềm
 
