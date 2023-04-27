@@ -17,6 +17,7 @@ function createHotelsSelection($hotels, $start_date, $end_date) {
 
         $hoe = $row['hotelID'];
         $hoe_name = $row['hotelName'];
+        $location = $row['location'];
         $link = $row['link_img'];
         $new_element = "
         <form class=\"div-box\" method=\"POST\" >
@@ -24,7 +25,7 @@ function createHotelsSelection($hotels, $start_date, $end_date) {
           <div class=\"child2\">
             <h3 class=\"hotelname\">$hoe_name</h3>
             <p>Room left : $rooms_left</p>
-            <p>Capacity : $capacity</p>
+            <p>Location: $location</p>
             <input class=\"submitbtn\" type=\"submit\" name=\"book_hotel\" value=\"Book Now\"></input>
             <input type=\"hidden\" name =\"chosen_hotel_id\" value=\"$hoe\">
             <br>

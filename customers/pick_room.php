@@ -56,6 +56,7 @@
                         <div class="child1-room"><img src="'.$row['link_img'].'" alt=""></div>
                         <div class = "child2-room">
                             Room number: ' . $row['roomID'] . '</b><br>
+                            Type: ' . $row['type'] . '</b><br>
                             Price Per Night: $' . $row['price'] . '<br> 
                             Capacity: ' . $row['capacity'] . '<br>
                         </div>
